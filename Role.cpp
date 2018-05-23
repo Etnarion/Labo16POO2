@@ -31,5 +31,17 @@ bool operator==(const Role& left, const Role& right) {
 }
 
 bool Role::cannotStayWith(const Role& role, const Container& container) const {
+    for (auto r : cantStayWith) {
+        if(!container.containsRole(r.second) && (container.containsRole(r.first))) {
+            return true;
+        }
+    }
+
+    // would be probably better not to run this list, but to define cantStayWith list for a thief and a policeman
+    for (auto r : role.cantStayWith) {
+        if(!container.containsRole(r.second) && (container.containsRole(r.first))) {
+            return true;
+        }
+    }
     return false;
 }

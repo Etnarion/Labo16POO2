@@ -7,6 +7,11 @@
 Container::Container(const std::string& name) : name(name) {}
 
 bool Container::containsRole(const Role& role) const {
+    for(auto person : persons) {
+        if(person.hasRole(role)) {
+            return true;
+        }
+    }
     return false;
 }
 
