@@ -31,3 +31,7 @@ bool Person::hasRole(const Role& role) const {
 const std::string Person::getName() const {
     return _name;
 }
+
+void Person::addRole(const Role& role) {
+    roles.push_front(role);
+}

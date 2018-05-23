@@ -14,7 +14,7 @@ enum Gender {FEMALE, MALE};
 
 class Person {
 private:
-    std::list<Role> roles;
+    std::list<const Role> roles;
     std::string _name;
 public:
     Person(std::string name, const Role& role);
