@@ -17,9 +17,9 @@ private:
     const std::list<Role> roles;
     std::string _name;
 public:
-    Person(std::string name, Role* role);
+    Person(std::string name, const Role& role);
 
-    void addRole(Role* role) {
+    void addRole(const Role& role) {
 
     }
 
@@ -33,7 +33,7 @@ public:
      * @param role role to check
      * @return true if the person is a holder of the role
      */
-    bool hasRole(Role role) const;
+    bool hasRole(const Role& role) const;
 
     const std::string getName() const;
 };

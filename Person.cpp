@@ -5,7 +5,7 @@
 #include "Person.h"
 #include "Role.h"
 
-Person::Person(std::string name, Role* role) {
+Person::Person(std::string name, const Role& role) {
     _name = name;
     addRole(role);
 }
@@ -19,7 +19,7 @@ bool Person::canDrive() const {
     return false;
 }
 
-bool Person::hasRole(Role role) const {
+bool Person::hasRole(const Role& role) const {
     for (auto r : roles) {
         if(r == role) {
             return true;
