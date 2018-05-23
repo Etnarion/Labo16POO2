@@ -10,9 +10,9 @@ Person::Person(std::string name, const Role& role) {
     addRole(role);
 }
 
-bool Person::canDrive() const {
-    for(auto role : roles) {
-        if(role.driver()) {
+bool Person::canDrive() {
+    for (auto r : roles) {
+        if(r.driver()) {
             return true;
         }
     }
