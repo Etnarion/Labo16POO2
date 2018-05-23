@@ -4,10 +4,29 @@
 #include "Role.h"
 #include "Person.h"
 
+using namespace std;
+
 int main() {
-    Controller controller = Controller();
+    /*Controller controller = Controller();
+    controller.addPerson(new Person("pere", Role::FATHER));
     controller.addPerson(new Person("mere", Role::MOTHER));
+    controller.addPerson(new Person("julie", Role::GIRL));
+    controller.addPerson(new Person("jeanne", Role::GIRL));
+    controller.addPerson(new Person("paul", Role::BOY));
+    controller.addPerson(new Person("pierre", Role::BOY));
+    controller.addPerson(new Person("voleur", Role::THIEF));
+    controller.addPerson(new Person("policier", Role::POLICEMAN));
     controller.showMenu();
-    controller.executeCommand();
+    controller.display();
+    controller.executeCommand();*/
+    cout << "***Person class test***" << endl;
+    Person mere("mere", Role::MOTHER);
+    Person pere("pere", Role::FATHER);
+    Person julie("julie", Role::GIRL);
+    Person policier("policier", Role::POLICEMAN);
+    cout << mere.canDrive() << endl;
+    cout << pere.canDrive() << endl;
+    cout << julie.canDrive() << endl;
+    cout << policier.canDrive() << endl;
     return EXIT_SUCCESS;
 }

@@ -12,9 +12,10 @@ class Boat : public Container {
 private:
     Bank* currentBank;
 public:
-    Boat(const std::string&);
+    Boat(const std::string&, Bank* bank);
     void embark(Person* person);
     void disembark(Person* person);
+    const Bank* getCurrentBank() const;
 };
 
 

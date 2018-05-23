@@ -4,8 +4,8 @@
 
 #include "Boat.h"
 
-Boat::Boat(const std::string& name) : Container::Container(name) {
-
+Boat::Boat(const std::string& name, Bank* bank) : Container::Container(name) {
+    currentBank = bank;
 }
 
 void Boat::embark(Person* person) {
@@ -18,4 +18,8 @@ void Boat::disembark(Person* person) {
     if (persons.size() > 0) {
         persons.remove(person);
     }
+}
+
+const Bank* Boat::getCurrentBank() const {
+    return currentBank;
 }

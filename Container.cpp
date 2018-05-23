@@ -16,3 +16,15 @@ Person* Container::findPersonByName(std::string name) {
             return person;
     }
 }
+
+const std::string Container::getName() const {
+    return name;
+}
+
+const std::list<Person*> Container::getPersons() const {
+    return persons;
+}
+
+void Container::addPerson(Person* person) {
+    persons.push_back(person);
+}

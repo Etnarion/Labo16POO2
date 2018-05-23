@@ -11,9 +11,9 @@
 #include "Boat.h"
 
 Controller::Controller() {
-    leftBank = new Bank("Left Bank");
-    rightBank = new Bank("Right Bank");
-    boat = new Boat("Boat");
+    leftBank = new Bank("Gauche");
+    rightBank = new Bank("Droite");
+    boat = new Boat("Bateau", leftBank);
 }
 
 void Controller::showMenu() const {
@@ -71,7 +71,14 @@ void Controller::executeCommand() {
 }
 
 void Controller::display() {
+    //Display left bank
+    displayBank(*leftBank);
 
+    //Display boat
+    displayBoat(*boat);
+
+    //Display right bank
+    displayBank(*rightBank);
 }
 
 void Controller::nextTurn() {
@@ -79,5 +86,29 @@ void Controller::nextTurn() {
 }
 
 void Controller::addPerson(Person* person) {
+    leftBank->addPerson(person);
+    persons.push_back(person);
+}
 
+void Controller::displayBank(const Bank& bank) {
+    const std::string SIDE = "--------------------------------------------------------------";
+    std::string people = bank.getName() + ": ";
+    for (Person* person : bank.getPersons()) {
+        people += person->getName() + " ";
+    }
+    std::cout << SIDE << std::endl << people << std::endl << SIDE << std::endl;
+}
+
+void Controller::displayBoat(const Boat& boat) {
+    const std::string RIVER = "==============================================================";
+    std::string people = boat.getName() + ": < ";
+    for (Person* person : boat.getPersons()) {
+        people += person->getName() + " ";
+    }
+    people += " >";
+    if (boat.getCurrentBank() == leftBank)
+        std::cout << people << std::endl;
+    std::cout << RIVER << std::endl;
+    if (boat.getCurrentBank() == rightBank)
+        std::cout << people << std::endl;
 }

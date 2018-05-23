@@ -14,14 +14,12 @@ enum Gender {FEMALE, MALE};
 
 class Person {
 private:
-    const std::list<Role> roles;
+    std::list<Role> roles;
     std::string _name;
 public:
     Person(std::string name, const Role& role);
 
-    void addRole(const Role& role) {
-
-    }
+    void addRole(const Role& role);
 
     /**
      * Checks if the person can drive

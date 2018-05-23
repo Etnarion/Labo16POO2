@@ -20,6 +20,9 @@ public:
     Container(const std::string&);
     bool containsRole(const Role& role) const;
     Person* findPersonByName(std::string name);
+    const std::string getName() const;
+    const std::list<Person*> getPersons() const;
+    void addPerson(Person* person);
 };
 
 
