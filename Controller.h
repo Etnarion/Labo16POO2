@@ -32,6 +32,10 @@ private:
         MENU = 'h'
     };
 
+    /**
+     * Diplays
+     * @param bank
+     */
     void displayBank(const Bank& bank);
     void displayBoat(const Boat& boat);
 

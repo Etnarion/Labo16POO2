@@ -32,6 +32,6 @@ bool Person::hasRole(const Role& role) const {
     return false;
 }
 
-const std::string Person::getName() const {
+const std::string& Person::getName() const {
     return _name;
 }

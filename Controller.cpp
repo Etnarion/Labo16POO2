@@ -31,6 +31,7 @@ void Controller::executeCommand() {
     bool done = false;
     while (!done) {
         std::string input;
+
         std::cin >> input;
         switch (input[0]) {
             case PRINT: {
@@ -38,19 +39,33 @@ void Controller::executeCommand() {
                 break;
             }
             case EMBARK: {
-                std::string nameToEmbark = input.substr(2, input.length());
-                Person *person = boat->findPersonByName(nameToEmbark);
-                if (person != nullptr)
+                std::string personToEmbark;
+                std::cin >> personToEmbark;
+                Person *person = boat->getCurrentBank()->findPersonByName(personToEmbark);
+                if (person != nullptr && !boat->isFull()) {
                     boat->embark(person);
+                    boat->getCurrentBank()->removePerson(person);
+                }
                 else
                     std::cout << "No person by that name" << std::endl;
                 break;
             }
             case LAND: {
-                std::string nameToLand = input.substr(2, input.length());
+                std::string personToLand;
+                std::cin >> personToLand;
+                Person *person = boat->findPersonByName(personToLand);
+                if (person != nullptr) {
+                    boat->disembark(person);
+                }
+                else
+                    std::cout << "No person by that name" << std::endl;
                 break;
             }
             case MOVE: {
+                if (boat->getCurrentBank() == leftBank)
+                    boat->changeBank(rightBank);
+                else
+                    boat->changeBank(leftBank);
                 break;
             }
             case RESET: {
@@ -67,6 +82,8 @@ void Controller::executeCommand() {
                 break;
             }
         }
+
+        display();
     }
 }
 
@@ -91,24 +108,18 @@ void Controller::addPerson(Person* person) {
 }
 
 void Controller::displayBank(const Bank& bank) {
-    const std::string SIDE = "--------------------------------------------------------------";
-    std::string people = bank.getName() + ": ";
-    for (Person* person : bank.getPersons()) {
-        people += person->getName() + " ";
-    }
-    std::cout << SIDE << std::endl << people << std::endl << SIDE << std::endl;
+    bank.displayBank();
 }
 
 void Controller::displayBoat(const Boat& boat) {
     const std::string RIVER = "==============================================================";
-    std::string people = boat.getName() + ": < ";
-    for (Person* person : boat.getPersons()) {
-        people += person->getName() + " ";
-    }
-    people += " >";
-    if (boat.getCurrentBank() == leftBank)
-        std::cout << people << std::endl;
+    if (boat.getCurrentBank() == leftBank) {
+        boat.displayBoat();
+    } else
+        std::cout << std::endl;
     std::cout << RIVER << std::endl;
-    if (boat.getCurrentBank() == rightBank)
-        std::cout << people << std::endl;
+    if (boat.getCurrentBank() == rightBank) {
+        boat.displayBoat();
+    } else
+        std::cout << std::endl;
 }

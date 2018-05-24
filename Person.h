@@ -33,7 +33,7 @@ public:
      */
     bool hasRole(const Role& role) const;
 
-    const std::string getName() const;
+    const std::string& getName() const;
 };
 
 
