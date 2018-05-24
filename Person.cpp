@@ -46,3 +46,21 @@ bool Person::cannotStayWith(const Person& person, const Container& container) co
     }
     return false;
 }
+
+bool operator==(const Person& left, const Person& right) {
+    if(left._name != right._name) {
+        return false;
+    }
+
+    int roleCount = 0;
+    for (auto r : left.roles) {
+        if(!right.hasRole(r)) {
+            return false;
+        }
+        roleCount++;
+    }
+    if(roleCount != right.roles.size()) {
+        return false;
+    }
+    return true;
+}

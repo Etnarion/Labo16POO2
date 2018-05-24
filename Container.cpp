@@ -32,3 +32,13 @@ void Container::displayPersons() const {
         std::cout << person->getName() << " ";
     }
 }
+
+bool Container::canContainPerson(const Person& person) const {
+    for (Person* p : persons) {
+        if(p->cannotStayWith(person, *this)) {
+            return false;
+        }
+    }
+    return true;
+}
+

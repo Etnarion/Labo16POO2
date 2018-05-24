@@ -2,6 +2,7 @@
 // Created by Shon on 03/05/18.
 //
 
+#include <iostream>
 #include "Role.h"
 #include "Container.h"
 
@@ -33,6 +34,7 @@ bool operator==(const Role& left, const Role& right) {
 bool Role::cannotStayWith(const Role& role, const Container& container) const {
     for (auto r : cantStayWith) {
         if(!container.containsRole(r.second) && (container.containsRole(r.first))) {
+            std::cout << role._name << " avec " << r.first._name << " sans " << r.second._name << std::endl;
             return true;
         }
     }
@@ -40,6 +42,7 @@ bool Role::cannotStayWith(const Role& role, const Container& container) const {
     // would be probably better not to run this list, but to define cantStayWith list for a thief and a policeman
     for (auto r : role.cantStayWith) {
         if(!container.containsRole(r.second) && (container.containsRole(r.first))) {
+            std::cout << role._name << " avec " << r.first._name << " sans " << r.second._name << std::endl;
             return true;
         }
     }

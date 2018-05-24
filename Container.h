@@ -23,6 +23,7 @@ public:
      * @param name
      */
     Container(const std::string& name);
+    Container(const Container& container);
 
     /**
      * Checks if container contains a given role
@@ -54,6 +55,9 @@ public:
      * Displays each persons in the console
      */
     void displayPersons() const;
+
+    bool canContainPerson(const Person& person) const;
+    bool canLeavePersonGo(const Person& person) const;
 };
 
 

@@ -48,6 +48,8 @@ public:
      * @return true if two persons can NOT stay in the same container
      */
     bool cannotStayWith(const Person& person, const Container& container) const;
+
+    friend bool operator==(const Person& left, const Person& right);
 };
 
 

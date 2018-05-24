@@ -42,7 +42,7 @@ void Controller::executeCommand() {
                 std::string personToEmbark;
                 std::cin >> personToEmbark;
                 Person *person = boat->getCurrentBank()->findPersonByName(personToEmbark);
-                if (person != nullptr && !boat->isFull()) {
+                if (person != nullptr && !boat->isFull() && boat->canContainPerson(*person)) {
                     boat->embark(person);
                     boat->getCurrentBank()->removePerson(person);
                 }
@@ -54,7 +54,7 @@ void Controller::executeCommand() {
                 std::string personToLand;
                 std::cin >> personToLand;
                 Person *person = boat->findPersonByName(personToLand);
-                if (person != nullptr) {
+                if (person != nullptr && boat->getCurrentBank()->canContainPerson(*person)) {
                     boat->disembark(person);
                 }
                 else

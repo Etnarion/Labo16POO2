@@ -28,14 +28,27 @@ int main() {
     // Tests
     //testPerson();
     Controller controller = Controller();
-    controller.addPerson(new Person("pere", Role::FATHER));
-    controller.addPerson(new Person("mere", Role::MOTHER));
-    controller.addPerson(new Person("julie", Role::GIRL));
-    controller.addPerson(new Person("jeanne", Role::GIRL));
-    controller.addPerson(new Person("paul", Role::BOY));
-    controller.addPerson(new Person("pierre", Role::BOY));
-    controller.addPerson(new Person("voleur", Role::THIEF));
-    controller.addPerson(new Person("policier", Role::POLICEMAN));
+
+    Person
+            mere("mere", Role::MOTHER),
+            pere("pere", Role::FATHER),
+            julie("julie", Role::GIRL),
+            jeanne("jeanne", Role::GIRL),
+            paul("paul", Role::BOY),
+            pierre("pierre", Role::BOY),
+            voleur("voleur", Role::THIEF),
+            policier("policier", Role::POLICEMAN);
+
+
+
+    controller.addPerson(&pere);
+    controller.addPerson(&mere);
+    controller.addPerson(&julie);
+    controller.addPerson(&jeanne);
+    controller.addPerson(&paul);
+    controller.addPerson(&pierre);
+    controller.addPerson(&voleur);
+    controller.addPerson(&policier);
     controller.showMenu();
     controller.display();
     controller.executeCommand();
