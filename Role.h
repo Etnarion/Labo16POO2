@@ -15,6 +15,8 @@ private:
     std::string _name;
     bool canDrive;
 
+    // for every element of the list (l):
+    // the holder of the role can not stay with tl.first in the container if l.second is not present
     std::list<std::pair<Role, Role>> cantStayWith;
 
     Role(const std::string& name, bool canDrive, std::initializer_list<std::pair<Role, Role>> cantStayWith);
@@ -24,7 +26,7 @@ private:
 //    Role& operator=(const Role&) = delete;
 
 public:
-    bool driver();
+    bool driver() const;
     std::string name();
     static const Role MOTHER, FATHER, BOY, GIRL, POLICEMAN, THIEF;
 

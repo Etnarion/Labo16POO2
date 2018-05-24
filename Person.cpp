@@ -10,13 +10,9 @@ Person::Person(std::string name, const Role& role) {
     addRole(role);
 }
 
-void Person::addRole(const Role& role) {
-    roles.push_back(role);
-}
-
-bool Person::canDrive() const {
-    for(Role role : roles) {
-        if(role.driver()) {
+bool Person::canDrive() {
+    for (auto r : roles) {
+        if(r.driver()) {
             return true;
         }
     }
@@ -34,4 +30,8 @@ bool Person::hasRole(const Role& role) const {
 
 const std::string& Person::getName() const {
     return _name;
+}
+
+void Person::addRole(const Role& role) {
+    roles.push_front(role);
 }
