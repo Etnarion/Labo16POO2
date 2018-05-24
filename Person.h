@@ -15,7 +15,7 @@ enum Gender {FEMALE, MALE};
 
 class Person {
 private:
-    std::list<const Role&> roles;
+    std::list<const Role> roles;
     std::string _name;
 public:
     Person(std::string name, const Role& role);
@@ -40,7 +40,6 @@ public:
     bool hasRole(const Role& role) const;
 
     const std::string& getName() const;
-    const std::string getName() const;
 
     /**
      * Checks if two persons can stay in the same container
