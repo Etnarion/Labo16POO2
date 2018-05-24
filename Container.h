@@ -17,8 +17,25 @@ private:
 protected:
     std::list<Person*> persons;
 public:
-    Container(const std::string&);
+    /**
+     * Constructor
+     * @param name the name of the container
+     */
+    Container(const std::string& name);
+
+    /**
+     * Checks if the container contains a person that holds the role
+     * @param role the role in question
+     * @return true if the container contains a person who holds the role
+     */
     bool containsRole(const Role& role) const;
+
+    /**
+     * Finds a person with the specified name
+     * @param name the name of the person to find
+     * @return the person found
+     */
+    // TODO what if the person is not found?
     Person* findPersonByName(std::string name);
 };
 

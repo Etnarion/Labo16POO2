@@ -12,7 +12,11 @@ class Boat : public Container {
 private:
     Bank* currentBank;
 public:
-    Boat(const std::string&);
+    /**
+     * Constructor
+     * @param name the name of the boat
+     */
+    Boat(const std::string& name);
     void embark(Person* person);
     void disembark(Person* person);
 };

@@ -35,3 +35,14 @@ const std::string Person::getName() const {
 void Person::addRole(const Role& role) {
     roles.push_front(role);
 }
+
+bool Person::cannotStayWith(const Person& person, const Container& container) const {
+    for (auto r1 : roles) {
+        for (auto r2 : person.roles) {
+            if(r1.cannotStayWith(r2, container)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

@@ -9,6 +9,7 @@ class Role;
 
 #include <string>
 #include <list>
+#include "Container.h"
 
 enum Gender {FEMALE, MALE};
 
@@ -19,6 +20,11 @@ private:
 public:
     Person(std::string name, const Role& role);
 
+    /**
+     * Adds a new role to a person
+     * @param role
+     */
+    // TODO check if the role is already in the list
     void addRole(const Role& role);
 
     /**
@@ -34,6 +40,14 @@ public:
     bool hasRole(const Role& role) const;
 
     const std::string getName() const;
+
+    /**
+     * Checks if two persons can stay in the same container
+     * @param person second person
+     * @param container container in question
+     * @return true if two persons can NOT stay in the same container
+     */
+    bool cannotStayWith(const Person& person, const Container& container) const;
 };
 
 

@@ -21,10 +21,6 @@ private:
 
     Role(const std::string& name, bool canDrive, std::initializer_list<std::pair<Role, Role>> cantStayWith);
 
-    // Deny the copies
-//    Role(const Role&) = delete;
-//    Role& operator=(const Role&) = delete;
-
 public:
     bool driver();
     std::string name();

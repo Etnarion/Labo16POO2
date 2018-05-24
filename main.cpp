@@ -17,9 +17,16 @@ void testPerson() {
     cout << policier.canDrive() << endl;
 }
 
+void testRoles() {
+    Person mere("mere", Role::MOTHER);
+    Person pere("pere", Role::FATHER);
+    Person julie("julie", Role::GIRL);
+
+}
+
 int main() {
     // Tests
-    testPerson();
+    //testPerson();
     Controller controller = Controller();
     controller.addPerson(new Person("mere", Role::MOTHER));
     controller.showMenu();
