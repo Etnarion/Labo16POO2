@@ -13,30 +13,47 @@ class Role;
 
 class Container {
 private:
-    std::string name;
+
 protected:
+    std::string name;
     std::list<Person*> persons;
 public:
     /**
-     * Constructor
-     * @param name the name of the container
+     * Container constructor which sets its name
+     * @param name
      */
     Container(const std::string& name);
 
     /**
-     * Checks if the container contains a person that holds the role
-     * @param role the role in question
-     * @return true if the container contains a person who holds the role
+     * Checks if container contains a given role
+     * @param role Role to check
+     * @return True if its present
      */
     bool containsRole(const Role& role) const;
 
     /**
-     * Finds a person with the specified name
-     * @param name the name of the person to find
-     * @return the person found
+     * Look for a person name in the list of persons et returns the person
+     * @param name Person name
+     * @return Person with the name
      */
-    // TODO what if the person is not found?
     Person* findPersonByName(std::string name);
+
+    /**
+     * Returns the name of the container
+     * @return Name of the container
+     */
+    const std::string getName() const;
+
+    /**
+     * Adds a person on the container
+     * @param person Person to add
+     */
+    void addPerson(Person* person);
+
+    /**
+     * Displays each persons in the console
+     */
+    void displayPersons() const;
 };
 
 

@@ -11,9 +11,9 @@
 #include "Boat.h"
 
 Controller::Controller() {
-    leftBank = new Bank("Left Bank");
-    rightBank = new Bank("Right Bank");
-    boat = new Boat("Boat");
+    leftBank = new Bank("Gauche");
+    rightBank = new Bank("Droite");
+    boat = new Boat("Bateau", leftBank);
 }
 
 void Controller::showMenu() const {
@@ -31,6 +31,7 @@ void Controller::executeCommand() {
     bool done = false;
     while (!done) {
         std::string input;
+
         std::cin >> input;
         switch (input[0]) {
             case PRINT: {
@@ -38,19 +39,33 @@ void Controller::executeCommand() {
                 break;
             }
             case EMBARK: {
-                std::string nameToEmbark = input.substr(2, input.length());
-                Person *person = boat->findPersonByName(nameToEmbark);
-                if (person != nullptr)
+                std::string personToEmbark;
+                std::cin >> personToEmbark;
+                Person *person = boat->getCurrentBank()->findPersonByName(personToEmbark);
+                if (person != nullptr && !boat->isFull()) {
                     boat->embark(person);
+                    boat->getCurrentBank()->removePerson(person);
+                }
                 else
                     std::cout << "No person by that name" << std::endl;
                 break;
             }
             case LAND: {
-                std::string nameToLand = input.substr(2, input.length());
+                std::string personToLand;
+                std::cin >> personToLand;
+                Person *person = boat->findPersonByName(personToLand);
+                if (person != nullptr) {
+                    boat->disembark(person);
+                }
+                else
+                    std::cout << "No person by that name" << std::endl;
                 break;
             }
             case MOVE: {
+                if (boat->getCurrentBank() == leftBank)
+                    boat->changeBank(rightBank);
+                else
+                    boat->changeBank(leftBank);
                 break;
             }
             case RESET: {
@@ -67,11 +82,20 @@ void Controller::executeCommand() {
                 break;
             }
         }
+
+        display();
     }
 }
 
 void Controller::display() {
+    //Display left bank
+    displayBank(*leftBank);
 
+    //Display boat
+    displayBoat(*boat);
+
+    //Display right bank
+    displayBank(*rightBank);
 }
 
 void Controller::nextTurn() {
@@ -79,5 +103,23 @@ void Controller::nextTurn() {
 }
 
 void Controller::addPerson(Person* person) {
+    leftBank->addPerson(person);
+    persons.push_back(person);
+}
 
+void Controller::displayBank(const Bank& bank) {
+    bank.displayBank();
+}
+
+void Controller::displayBoat(const Boat& boat) {
+    const std::string RIVER = "==============================================================";
+    if (boat.getCurrentBank() == leftBank) {
+        boat.displayBoat();
+    } else
+        std::cout << std::endl;
+    std::cout << RIVER << std::endl;
+    if (boat.getCurrentBank() == rightBank) {
+        boat.displayBoat();
+    } else
+        std::cout << std::endl;
 }

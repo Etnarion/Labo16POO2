@@ -1,21 +1,6 @@
-cmake_minimum_required(VERSION 3.8)
-project(Labo16POO2)
+cmake_minimum_required(VERSION 3.10)
+project(DernierEssai)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES
-        Bank.cpp
-        Bank.h
-        Boat.cpp
-        Boat.h
-        Container.cpp
-        Container.h
-        Controller.cpp
-        Controller.h
-        main.cpp
-        Person.cpp
-        Person.h
-        Role.cpp
-        Role.h)
-
-add_executable(Labo16POO2 ${SOURCE_FILES})
+add_executable(DernierEssai main.cpp Bank.cpp Bank.h Boat.cpp Boat.h Container.cpp Container.h Person.cpp Person.h Controller.cpp Controller.h Role.cpp Role.h main.cpp)

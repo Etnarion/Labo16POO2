@@ -16,7 +16,7 @@ std::string Role::name() {
     return _name;
 }
 
-bool Role::driver() {
+bool Role::driver() const {
     return canDrive;
 }
 

@@ -10,7 +10,28 @@
 class Bank : public Container {
 private:
 public:
+    /**
+     * Basic constructor. Sets bank name
+     * @param name Bank name
+     */
     Bank(const std::string& name);
+
+    /**
+     * Adds a person on the bank
+     * @param person Person to add
+     */
+    void addPerson(Person* person);
+
+    /**
+     * Remove a person from the bank
+     * @param person Person to remove
+     */
+    void removePerson(Person* person);
+
+    /**
+     * Display current situation
+     */
+    void displayBank() const;
 };
 
 

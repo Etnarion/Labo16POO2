@@ -22,7 +22,7 @@ private:
     Role(const std::string& name, bool canDrive, std::initializer_list<std::pair<Role, Role>> cantStayWith);
 
 public:
-    bool driver();
+    bool driver() const;
     std::string name();
     static const Role MOTHER, FATHER, BOY, GIRL, POLICEMAN, THIEF;
 
